@@ -80,7 +80,8 @@ using namespace std;
         /**Sets camera Height. Use a multiple of 240 (480, 960)
          */
         inline void setHeight ( unsigned int height ){};
-        inline void setCaptureSize ( unsigned int width, unsigned int height );
+
+        inline void setCaptureSize ( unsigned int width, unsigned int height ){};
         /** Set image brightness [0,100]
          */
         inline void setBrightness ( unsigned int brightness );
@@ -133,6 +134,7 @@ using namespace std;
         inline size_t getImageTypeSize ( RASPICAM_FORMAT type ) const {return 600;};
         
         private:
+
     };
 
 #endif /* RASPICAM_H */

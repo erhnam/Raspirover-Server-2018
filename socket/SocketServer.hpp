@@ -22,6 +22,8 @@
 #include <stdlib.h>     /* exit, EXIT_FAILURE */
 #include <list>
 #include <vector>
+#include "../sensor/sensor.hpp"
+#include "/usr/local/Cellar/mariadb/10.3.8/include/mysql/mysql.h"
 
 #include "hostInfo.hpp"
 
@@ -44,6 +46,18 @@ class SocketServer{
 	    struct sockaddr_in clientAddr;    	// Address of the client that sent data
 		bool connected;
 		char buffer [MAX_MSG_LEN];
+		int error_code;								//Check status
+		socklen_t error_code_size = sizeof(error_code);	//Check status
+		int check;
+
+		MYSQL *conn;
+		MYSQL_RES *result;
+		MYSQL_ROW row;
+		const char* host = "localhost";
+		const char* database = "db_rover";
+		const char* db_user = "raspirover";
+		const char* db_pass = "raspirover";
+
 		SocketServer() {}
 		
 		void setSocketId(int socketFd) { socketId = socketFd; }
@@ -73,6 +87,8 @@ class TcpSocket : public SocketServer {
 	    unsigned short int timeSensors;
 	    unsigned short int command;
 		char * movement;
+		char * explorationName;
+		vector <Sensor *> sensors;
 
 		TcpSocket() {
 			    timeSensors = -1;
@@ -88,6 +104,8 @@ class TcpSocket : public SocketServer {
 
 		unsigned short int getTime(){return timeSensors;};
 
+		char * getExplorationName() { return explorationName; }
+
 		int sendMessage(string&);
 
 		char * recieveMessage();
@@ -102,12 +120,22 @@ class TcpSocket : public SocketServer {
 
 		TcpSocket* acceptClient(string&);
 
-		void listenToClient(int numPorts = 5);
+		void listenToClient(int numPorts = 1);
 
 		void error(const char *msg);
 
 		void closeSocket ();
 
+		bool isAlive();
+
+		vector <Sensor *> getSensors() const {return sensors;}
+
+		void setSensors(vector <Sensor *> s) {this->sensors = s;}
+
+		void createSensors();
+
+		bool createExploration();
+    
 };
 
 #endif

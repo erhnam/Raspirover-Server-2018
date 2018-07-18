@@ -10,12 +10,11 @@ struct sensor{
 };
 
 vector <sensor> sensorTypes { 
-	{1,"DHT22TEMP","GPIO"},
-	{2,"DHT22HUM","GPIO"},
-	{3,"HCSR04","GPIO"},
-	{4,"LDR","SPI"},
-	{5,"FIRE","SPI"},
-	{6,"MQ2","SPI"},
-	{7,"CAMERA","CSI"},
-	{8,"NEO6MV2","UART"}
+	{1,"DHT22","GPIO"},
+	{2,"HCSR04","GPIO"},
+	{3,"LDR","SPI"},
+	{4,"FIRE","SPI"},
+	{5,"MQ2","SPI"},
+	{6,"CAMERA","CSI"},
+	{7,"NEO6MV2","UART"}
 }; 
