@@ -9,7 +9,7 @@
 #define __SOCKETSERVER_HPP__
 
 #include <fcntl.h>
-#include <sys/filio.h>
+//#include <sys/filio.h>
 #include <iostream>
 #include <cstdlib>
 #include <string>
@@ -23,7 +23,7 @@
 #include <list>
 #include <vector>
 #include "../sensor/sensor.hpp"
-#include "/usr/local/Cellar/mariadb/10.3.8/include/mysql/mysql.h"
+#include <mysql/mysql.h>
 
 #include "hostInfo.hpp"
 

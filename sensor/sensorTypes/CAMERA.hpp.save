@@ -1,4 +1,4 @@
-#ifndef __CAMERA_HPP__
+cc#ifndef __CAMERA_HPP__
 #define	__CAMERA_HPP__
 #include "../sensor.hpp"
 #include <iostream>
@@ -23,11 +23,11 @@ public:
 	bool init(unsigned int millisecs) {
 		//Configuración de la cámara
 		cam.setCaptureSize(320,240);
-//		cam.setVideoStabilization(true);
+		cam.setVideoStabilization(true);
 	 	cam.setHorizontalFlip (true);
 	        cam.setVerticalFlip(true);
 		cam.setFormat(raspicam::RASPICAM_FORMAT_GRAY);
-
+//		cam.setFormat(RASPICAM_FORMAT_GRAY);
 		//Abrir cámara
 		if ( !cam.open()) {
 			cerr << "Error inicializando la cámara\n";
@@ -47,10 +47,10 @@ public:
 				return false;
 		}
 
-		setUpdate_interval(150);
+		setUpdate_interval(100);
                 std::this_thread::sleep_for(std::chrono::milliseconds(3000));
 		running = true;
-		update_thread = thread(&Sensor::update, this, ref(running), 150) ;
+		update_thread = thread(&Sensor::update, this, ref(running), 100) ;
 		return true;
 	}
 
@@ -66,11 +66,11 @@ public:
 		unsigned long ini = micros();
 		//Captura
 		cam.grab();
-		//Extrae la imagen en formato GRAY
+		//Extrae la imagen en formato RGB
 		cam.retrieve ( value, RASPICAM_FORMAT_IGNORE );
 //		cout << "CAMERA LEIDO" << endl;
 		send(socketId,value,bytes,0);
-		bzero(value, sizeof(value));
+//		bzero(value, sizeof(value));
 		cout << "Tiempo tardado: " << micros()-ini << endl;
 	}
 

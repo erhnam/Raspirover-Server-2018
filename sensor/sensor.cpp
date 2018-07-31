@@ -1,6 +1,6 @@
 #include "sensorTypes/DHT22.hpp"
 #include "sensorTypes/HCSR04.hpp"
-#include "sensorTypes/NEO6MV2.hpp"
+//#include "sensorTypes/NEO6MV2.hpp"
 #include "sensorTypes/FIRE.hpp"
 #include "sensorTypes/LDR.hpp"
 #include "sensorTypes/MQ2.hpp"
@@ -19,11 +19,11 @@ using namespace std;
 			s= new HCSR04();
 			s->setName("HCSR04");
 		} 
-		else if (sensorClassName == sensorClassNames[2]) {
+/*		else if (sensorClassName == sensorClassNames[2]) {
 			s= new NEO6MV2();
 			s->setName("NEO6MV2");
 		} 
-		else if (sensorClassName == sensorClassNames[3]) {
+*/		else if (sensorClassName == sensorClassNames[3]) {
 			s= new FIRE();
 			s->setName("FIRE");
 		} 

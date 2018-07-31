@@ -3,22 +3,24 @@
 
 // Para conocer si se incluye simulación o no
 //#ifndef SIMU_WIRINGPI
-/*
-#include <gps/serial.h>
-#include <gps/nmea.h>
-#include <gps/gps.h>
+
+#include "gps/serial.h"
+#include "gps/nmea.h"
+#include "gps/gps.h"
 #include <raspicam/raspicam.h>
 #include <wiringPi.h>
 #include <wiringPiSPI.h>
-#include <nuestroSPI.h>
-*/
+//#include <nuestroSPI.h>
+
+/*
 #include "simu/wiringPi.h"
 #include "simu/gps.h"
 #include "simu/raspicam.h"
 #include "simu/raspicamtypes.h"
 #include <iostream>
+*/
 
-//using namespace raspicam;
+using namespace raspicam;
 
 //#else
 /*

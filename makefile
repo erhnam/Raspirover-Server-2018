@@ -1,12 +1,16 @@
 OBJECTOS = main.o SocketServer.o hostInfo.o sensor.o
-FLAGS =  -g -Wall -O2 -std=c++11 
+
+FLAGS =  -g -Wall -O2 -std=c++11 -lgps -lm -lwiringPi -lmysqlclient -lpthread -lraspicam
 
 all: main clean
 
 main: $(OBJECTOS)
-	g++ $(FLAGS) -lmariadb -lz -liconv -lssl -lcrypto -o server.out $(OBJECTOS)
+	g++ $(FLAGS) -o server.out $(OBJECTOS)
 	@echo  Terminado
 	@echo  Ejecute ./server.out para iniciar el programa. 
+
+gps.o: gps/gps.c
+	g++ -c $(FLAGS) gps/gps.c 
 
 sensor.o: sensor/sensor.cpp
 	g++ -c $(FLAGS) sensor/sensor.cpp 

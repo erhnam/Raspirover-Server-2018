@@ -4,6 +4,7 @@
 #include "../sensor.hpp"
 #include <sys/mman.h>
 #include <stdio.h>
+#include "../../gps/gps.h"
 
 struct GPSData {
 	double lat;

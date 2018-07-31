@@ -9,14 +9,13 @@
 #include <chrono>
 #include <iostream>
 #include "../raspberryports.hpp"
-#include <mutex>         
+#include <mutex>
 #include <condition_variable>
 #include <cstdlib>
 #include <vector>
 #include <time.h>
+#include <mysql/mysql.h>
 
-
-#include "/usr/local/Cellar/mariadb/10.3.8/include/mysql/mysql.h"
 
 using namespace std;
 
